@@ -2,7 +2,7 @@ PLATFORM = $(shell file /bin/ls | cut -d' ' -f3 | cut -d'-' -f1)
 CC = g++
 OUT = ./game_r40250_$(PLATFORM)
 LIBS = -pthread -lm -lmd -lIL -lpng -ltiff -lmng -llcms -ljpeg -lmysqlclient -lz -L/usr/local/lib/mysql 
-LIBS += -lthecore -lpoly -llua -lsql -lgame -lserverkey -lcryptopp -lanticpxsvr
+LIBS += -lthecore -lpoly -llua -lsql -lgame -lserverkey -lcryptopp
 CFLAGS = -g -Wall -O2 -m32 -fpermissive -pipe -fexceptions -D_THREAD_SAFE -DNDEBUG # -D_USE_SERVER_KEY_
 CFLAGS += -mtune=i686 -fstack-protector-all
 INCDIR = -Iinclude -I/usr/local/include -I../../Extern/include/boost -I../libdevil
