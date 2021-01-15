@@ -19,4 +19,4 @@ obj/%.o: src/%.cpp
 	@$(CXX) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -rf obj
+	@rm -rf obj $(OUT)

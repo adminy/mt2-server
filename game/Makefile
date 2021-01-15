@@ -28,4 +28,4 @@ obj/%.o: src/%.cpp
 	@$(CC) $(CFLAGS) $(INCDIR) -c $< -o $@
 
 clean:
-	@rm -rf obj
+	@rm -rf obj $(OUT)

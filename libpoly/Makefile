@@ -18,4 +18,4 @@ obj/%.o: src/%.cc
 	@$(CXX) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -rf obj
+	@rm -rf obj $(OUT)
