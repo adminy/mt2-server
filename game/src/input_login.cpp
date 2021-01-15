@@ -30,7 +30,6 @@
 #include "log.h"
 #include "horsename_manager.h"
 #include "MarkManager.h"
-#include "HackShield.h"
 
 static void _send_bonus_info(LPCHARACTER ch)
 {
@@ -1098,13 +1097,6 @@ int CInputLogin::Analyze(LPDESC d, BYTE bHeader, const char * c_pData)
 
 		case HEADER_CG_CLIENT_VERSION2:
 			Version(d->GetCharacter(), c_pData);
-			break;
-
-		case HEADER_CG_HS_ACK:
-			if (isHackShieldEnable)
-			{
-				CHackShieldManager::instance().VerifyAck(d->GetCharacter(), c_pData);
-			}
 			break;
 
 		default:

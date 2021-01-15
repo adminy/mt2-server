@@ -107,10 +107,6 @@ extern bool g_noticeBattleZone;         // �߸����뿡 ������
 
 extern DWORD g_GoldDropTimeLimitValue;
 
-extern bool isHackShieldEnable;
-extern int  HackShield_FirstCheckWaitTime;
-extern int  HackShield_CheckCycleTime;
-
 extern int gPlayerMaxLevel;
 
 extern bool g_BlockCharCreation;

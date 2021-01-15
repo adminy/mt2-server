@@ -7,9 +7,9 @@ CFLAGS = -g -Wall -O2 -m32 -fpermissive -pipe -fexceptions -D_THREAD_SAFE -DNDEB
 CFLAGS += -mtune=i686 -fstack-protector-all
 INCDIR = -Iinclude -I/usr/local/include -I../../Extern/include/boost -I../libdevil
 INCDIR += -I../libmysql/7.x-5.1.35 -I../cryptopp/include
-INCDIR += -I../liblua/include -I../libserverkey/include -I../libhackshield/include
+INCDIR += -I../liblua/include -I../libserverkey/include
 INCDIR +=  -L/usr/local/lib/mysql
-LDIR = -L../libdevil -L../libmysql/7.x-5.1.35 -L../cryptopp -L../libhackshield/lib -L/usr/local/lib
+LDIR = -L../libdevil -L../libmysql/7.x-5.1.35 -L../cryptopp -L/usr/local/lib
 LDIR += -L../libthecore -L../libpoly -L../libsql -L../libgame -L../liblua -L../libserverkey
 CPP_FILES := $(wildcard src/*.cpp)
 OBJ_FILES := $(addprefix obj/,$(notdir $(CPP_FILES:.cpp=.o))) obj/minilzo.o
