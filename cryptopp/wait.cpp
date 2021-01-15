@@ -144,7 +144,7 @@ void WaitObjectContainer::AddHandle(HANDLE handle, CallStack const& callStack)
 
 DWORD WINAPI WaitingThread(LPVOID lParam)
 {
-	std::auto_ptr<WaitingThreadData> pThread((WaitingThreadData *)lParam);
+	std::unique_ptr<WaitingThreadData> pThread((WaitingThreadData *)lParam);
 	WaitingThreadData &thread = *pThread;
 	std::vector<HANDLE> handles;
 

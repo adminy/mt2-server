@@ -376,7 +376,7 @@ bool TestOS_RNG()
 }
 
 // VC50 workaround
-typedef auto_ptr<BlockTransformation> apbt;
+typedef unique_ptr<BlockTransformation> apbt;
 
 class CipherFactory
 {
@@ -1043,7 +1043,7 @@ bool ValidateARC4()
 	0x9e,0x27,0x55,0xab,0x18,0x1a,0xb7,0xe9,0x40,0xb0,
 	0xc0};
 
-	// VC60 workaround: auto_ptr lacks reset()
+	// VC60 workaround: unique_ptr lacks reset()
 	member_ptr<Weak::ARC4> arc4;
 	bool pass=true, fail;
 	int i;

@@ -840,7 +840,7 @@ void GF2NPP::DEREncode(BufferedTransformation &bt) const
 
 GF2NP * BERDecodeGF2NP(BufferedTransformation &bt)
 {
-	// VC60 workaround: auto_ptr lacks reset()
+	// VC60 workaround: unique_ptr lacks reset()
 	member_ptr<GF2NP> result;
 
 	BERSequenceDecoder seq(bt);
