@@ -61,13 +61,8 @@
 #include "HackShield.h"
 #include "skill_power.h"
 #include "SpeedServer.h"
-#include "XTrapManager.h"
 #include "DragonSoul.h"
 #include <boost/bind.hpp>
-#ifndef __WIN32__
-	#include "limit_time.h"
-#endif
-
 //#define __FILEMONITOR__
 
 #if defined (__FreeBSD__) && defined(__FILEMONITOR__)
@@ -78,18 +73,10 @@
 #include "auction_manager.h"
 #endif
 
-#ifndef __WIN32__
-#include <gtest/gtest.h>
-#endif
-
 #ifdef USE_STACKTRACE
 #include <execinfo.h>
 #endif
 
-// �����쿡�� �׽�Ʈ�� ���� �׻� ����Ű üũ
-#ifdef _WIN32
-	//#define _USE_SERVER_KEY_
-#endif
 #include "check_server.h"
 
 #if defined(__FreeBSD__) && defined(DEBUG_ALLOC)
@@ -439,18 +426,6 @@ int main(int argc, char **argv)
 	DebugAllocator::StaticSetUp();
 #endif
 
-#ifndef __WIN32__
-	// <Factor> start unit tests if option is set
-	if ( argc > 1 ) 
-	{
-		if ( strcmp( argv[1], "unittest" ) == 0 )
-		{
-			::testing::InitGoogleTest(&argc, argv);
-			return RUN_ALL_TESTS();
-		}
-	}
-#endif
-
 	ilInit(); // DevIL Initialize
 	
 	SECTREE_MANAGER	sectree_manager;
@@ -501,7 +476,6 @@ int main(int argc, char **argv)
 	CDragonLairManager	dl_manager;
 
 	CHackShieldManager	HSManager;
-	CXTrapManager		XTManager;
 
 	CSpeedServerManager SSManager;
 	DSManager dsManager;
@@ -558,26 +532,6 @@ int main(int argc, char **argv)
 				CleanUpForEarlyExit();
 				return 0;
 			}
-		}
-
-		//xtrap
-		if(bXTrapEnabled)
-		{
-			if (!XTManager.LoadXTrapModule())
-			{
-				CleanUpForEarlyExit();
-				return 0;
-			}
-#if defined (__FreeBSD__) && defined(__FILEMONITOR__)
-			//PFN_FileChangeListener pNotifyFunc = boost::bind( &CXTrapManager::NotifyMapFileChanged, CXTrapManager::instance(), _1 );
-			PFN_FileChangeListener pNotifyFunc = &(CXTrapManager::NotifyMapFileChanged);
-
-			const std::string strMap1Name = "map1.CS3";
-			const std::string strMap2Name = "map2.CS3";
-
-			FileMonitorFreeBSD::Instance().AddWatch( strMap1Name, pNotifyFunc );
-			FileMonitorFreeBSD::Instance().AddWatch( strMap2Name, pNotifyFunc );
-#endif
 		}
 	}
 
