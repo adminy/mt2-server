@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Semaphore.h"
+#include "SemaphoreSQL.h"
 
 #ifndef __WIN32__
 

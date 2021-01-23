@@ -145,10 +145,10 @@ bool CAsyncSQL::Connect()
 
 	fprintf(stdout, "AsyncSQL: connected to %s (reconnect %d)\n", m_stHost.c_str(), m_hDB.reconnect);
 
-	// db cache´Â common dbÀÇ LOCALE Å×ÀÌºí¿¡¼­ localeÀ» ¾Ë¾Æ¿À°í, ÀÌÈÄ character setÀ» ¼öÁ¤ÇÑ´Ù.
-	// µû¶ó¼­ ÃÖÃÊ ConnectionÀ» ¸ÎÀ» ¶§¿¡´Â localeÀ» ¸ð¸£±â ¶§¹®¿¡ character setÀ» Á¤ÇÒ ¼ö°¡ ¾øÀ½¿¡µµ ºÒ±¸ÇÏ°í,
-	// °­Á¦·Î character setÀ» euckr·Î Á¤ÇÏµµ·Ï µÇ¾îÀÖ¾î ÀÌ ºÎºÐÀ» ÁÖ¼®Ã³¸® ÇÏ¿´´Ù.
-	// (¾Æ·¡ ÁÖ¼®À» Ç®¸é mysql¿¡ euckrÀÌ ¾È ±ò·ÁÀÖ´Â µðºñ¿¡ Á¢±ÙÇÒ ¼ö°¡ ¾ø´Ù.)
+	// db cacheï¿½ï¿½ common dbï¿½ï¿½ LOCALE ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ localeï¿½ï¿½ ï¿½Ë¾Æ¿ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ character setï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Connectionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ localeï¿½ï¿½ ï¿½ð¸£±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ character setï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò±ï¿½ï¿½Ï°ï¿½,
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ character setï¿½ï¿½ euckrï¿½ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½Ã³ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½.
+	// (ï¿½Æ·ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ mysqlï¿½ï¿½ euckrï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.)
 	//while (!QueryLocaleSet());
 	m_ulThreadID = mysql_thread_id(&m_hDB);
 
@@ -529,7 +529,7 @@ class cProfiler
 
 void CAsyncSQL::ChildLoop()
 {
-	cProfiler profiler(500000); // 0.5ÃÊ
+	cProfiler profiler(500000); // 0.5ï¿½ï¿½
 
 	while (!m_bEnd)
 	{
@@ -546,7 +546,7 @@ void CAsyncSQL::ChildLoop()
 
 		while (count--)
 		{
-			//½Ã°£ Ã¼Å© ½ÃÀÛ 
+			//ï¿½Ã°ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ 
 			profiler.Start();
 
 			if (!PeekQueryFromCopyQueue(&p))
@@ -591,7 +591,7 @@ void CAsyncSQL::ChildLoop()
 
 			profiler.Stop();
 			
-			// 0.5ÃÊ ÀÌ»ó °É·ÈÀ¸¸é ·Î±×¿¡ ³²±â±â
+			// 0.5ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±×¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 			if (!profiler.IsOk())
 				sys_log(0, "[QUERY : LONG INTERVAL(OverSec %ld.%ld)] : %s", 
 						profiler.GetResultSec(), profiler.GetResultUSec(), p->stQuery.c_str());
@@ -693,9 +693,9 @@ size_t CAsyncSQL::EscapeString(char* dst, size_t dstSize, const char *src, size_
 
 	if (dstSize < srcSize * 2 + 1)
 	{
-		// \0ÀÌ ¾ÈºÙ¾îÀÖÀ» ¶§¸¦ ´ëºñÇØ¼­ 256 ¹ÙÀÌÆ®¸¸ º¹»çÇØ¼­ ·Î±×·Î Ãâ·Â
+		// \0ï¿½ï¿½ ï¿½ÈºÙ¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ 256 ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½
 		char tmp[256];
-		size_t tmpLen = sizeof(tmp) > srcSize ? srcSize : sizeof(tmp); // µÑ Áß¿¡ ÀÛÀº Å©±â
+		size_t tmpLen = sizeof(tmp) > srcSize ? srcSize : sizeof(tmp); // ï¿½ï¿½ ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
 		strlcpy(tmp, src, tmpLen);
 
 		sys_err("FATAL ERROR!! not enough buffer size (dstSize %u srcSize %u src%s: %s)",
@@ -708,12 +708,10 @@ size_t CAsyncSQL::EscapeString(char* dst, size_t dstSize, const char *src, size_
 	return mysql_real_escape_string(GetSQLHandle(), dst, src, srcSize);
 }
 
-void CAsyncSQL2::SetLocale(const std::string & stLocale)
-{
-if(m_stLocale != stLocale)
-{
-m_stLocale = stLocale;
-QueryLocaleSet();
-}
+void CAsyncSQL2::SetLocale(const std::string & stLocale) {
+	if(m_stLocale != stLocale) {
+		m_stLocale = stLocale;
+		QueryLocaleSet();
+	}
 }
 

@@ -1,4 +1,3 @@
-CC = g++
 OUT = ./db_r40146
 
 IFLAGS = -Iinclude -I../boost -I../libmysql/7.x-5.1.35
@@ -14,10 +13,10 @@ setup:
 	@mkdir -p obj
 
 $(OUT): $(OBJ_FILES)
-	@$(CC) $(CFLAGS) $(LDIR) $^ $(LIBS) -o $@
+	@$(CXX) $(CFLAGS) $(LDIR) $^ $(LIBS) -o $@
 
 obj/%.o: src/%.cpp
-	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CXX) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
 	@rm -rf obj

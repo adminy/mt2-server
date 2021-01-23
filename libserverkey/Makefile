@@ -1,4 +1,3 @@
-CXX	= g++
 OUT = ./libserverkey.a
 
 IFLAGS = -Iinclude
@@ -12,7 +11,7 @@ setup:
 	@mkdir -p obj
 
 $(OUT): $(OBJ_FILES)
-	@$(AR) cru $@ $^
+	@$(AR) $@ $^
 
 obj/%.o: src/%.cpp
 	@$(CXX) $(CFLAGS) -c $< -o $@

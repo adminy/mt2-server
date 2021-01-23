@@ -1,6 +1,3 @@
-CC= gcc
-AR= ar rcu
-RANLIB=ranlib
 CFLAGS= -O2 -g -Wall -Iinclude #-lm
 SRC = $(wildcard src/*.c)
 OBJ_FILES := $(addprefix obj/,$(notdir $(SRC:.c=.o)))

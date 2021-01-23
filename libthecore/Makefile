@@ -1,4 +1,3 @@
-CC	= g++
 OUT = ./libthecore.a
 
 IFLAGS = -Iinclude
@@ -12,10 +11,10 @@ setup:
 	@mkdir -p obj
 
 $(OUT): $(OBJ_FILES)
-	@$(AR) cru $@ $^
+	@$(AR) $@ $^
 
 obj/%.o: src/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CXX) $(CFLAGS) -c $< -o $@
 
 clean:
 	@rm -rf obj $(OUT)

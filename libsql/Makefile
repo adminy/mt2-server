@@ -1,4 +1,3 @@
-CXX	= g++
 OUT = ./libsql.a
 
 IFLAGS = -Iinclude -I../libmysql/7.x-5.1.35 #-I../libmysql/5.x-5.1.35
@@ -12,8 +11,7 @@ setup:
 	@mkdir -p obj
 
 $(OUT): $(OBJ_FILES)
-	@$(AR) cru $@ $^
-	# @ranlib $@ # @chmod 700 $@
+	@$(AR) $@ $^
 
 obj/%.o: src/%.cpp
 	@$(CXX) $(CFLAGS) -c $< -o $@

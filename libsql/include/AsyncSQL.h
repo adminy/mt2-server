@@ -12,7 +12,7 @@
 #include <mysql/errmsg.h>
 #include <mysql/mysqld_error.h>
 
-#include "Semaphore.h"
+#include "Semaphore_SQL.h"
 
 #define QUERY_MAX_LEN 8192
 

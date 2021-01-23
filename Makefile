@@ -1,5 +1,10 @@
-CC=gcc
-CXX=g++
+export CC = gcc
+export CXX = g++
+export AR = ar cru
+# export CC = x86_64-unknown-freebsd12-gcc
+# export CXX = x86_64-unknown-freebsd12-g++
+# export AR = x86_64-unknown-freebsd12-ar cru
+
 default:
 	$(MAKE) -C libthecore
 	$(MAKE) -C libpoly
